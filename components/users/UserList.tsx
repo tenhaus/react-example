@@ -1,32 +1,50 @@
-import { User } from "@store/users";
+import { UserState } from "@store/users";
+import styled from 'styled-components';
+
+const Layout = styled.div`
+  ul {
+    list-style: none;
+    padding-left: 0px;
+  }
+
+  li {
+    padding: 10px 5px;
+    cursor:pointer;
+    :hover {background-color: #ededed}
+  }
+`
+
+type HandleUserFunction = (user: UserState) => void
 
 interface Props {
-  className: string;
-  users: User[]
+    className: string;
+    users: UserState[]
+    handleSetSelectedUser: HandleUserFunction
 }
 
-function UserListItem(user: User) {
+
+function UserListItem(user: UserState, handleSetSelectedUser: HandleUserFunction) {
+
     const { firstName, lastName, phone, email, username } = user.profile;
-  return (
-    <div>
-      <p>ID: {user.id}</p>
-      <p>Name: {firstName} {lastName}</p>
-      <p>Phone: {phone}</p>
-      <p>Email: {email}</p>
-      <p>Username: {username}</p>
-    </div>
+
+    return (
+        <li key={user.id as number} onClick={() => handleSetSelectedUser(user)}> {firstName} {lastName} </li>
     )
 }
 
+
 export default function UserList(props: Props) {
+
     const users = props.users.map((user) => {
-      return UserListItem(user)
+        return UserListItem(user, props.handleSetSelectedUser)
     })
-    
-  return (
-    <div>
-      <h1 className={props.className}>user list</h1>      
-          {users}
-    </div>
-  )
+
+    return (
+        <Layout className={props.className}>
+            <h1>User List</h1>
+            <ul>
+                {users}
+            </ul>
+        </Layout>
+    )
 }

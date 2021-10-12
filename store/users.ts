@@ -1,12 +1,12 @@
 import { atom } from 'recoil';
 import { Profile } from './profile';
 
-export interface User {
+export interface UserState {
     id: Number;
     profile?: Profile
 }
 
-const defaultUserList: User[] = [
+const defaultUserList: UserState[] = [
     {
         id: 1,
         profile: {
