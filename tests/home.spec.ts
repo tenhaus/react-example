@@ -14,4 +14,4 @@ test('profile form displays', async ({ page }) => {
     
     await expect(page.locator('text=Profile').first()).toBeVisible();
   
-  });
+});
