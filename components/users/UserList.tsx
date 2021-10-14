@@ -28,7 +28,7 @@ function UserListItem(user: UserState, handleSetSelectedUser: HandleUserFunction
     const { firstName, lastName, phone, email, username } = user.profile;
 
     return (
-        <li key={user.id as number} onClick={() => handleSetSelectedUser(user)}> {firstName} {lastName} </li>
+        <li key={user.id as number} onClick={() => handleSetSelectedUser(user)} className='userLineItem'> {firstName} {lastName} </li>
     )
 }
 
