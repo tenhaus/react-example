@@ -3,13 +3,11 @@ import { Profile } from './profile';
 
 export interface UserState {
     id: Number;
-    test: Number;
     profile?: Profile
 }
 
 const defaultUserList: UserState[] = [
     {
-        test: 1,
         id: 1,
         profile: {
             firstName: "Chris",
@@ -20,8 +18,6 @@ const defaultUserList: UserState[] = [
         }
     },
     {
-        
-        test: 1,
         id: 2,
         profile: {
             firstName: "Chris",
